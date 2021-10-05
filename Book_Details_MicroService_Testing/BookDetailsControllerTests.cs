@@ -48,7 +48,7 @@ namespace Book_Details_MicroService_Testing
                 Id = 1,
                 Book_Name = "Dot Net",
                 Book_Author_Name = "Dr Swammy",
-                ISBN_Num = "12345",
+                ISBN_Num = "1234567890123",
                 Book_Publication_Date = DateTime.Parse("01/02/2020")
             };
             //Act
@@ -66,7 +66,7 @@ namespace Book_Details_MicroService_Testing
                 Id = 1,
                 Book_Name = "Dot Net",
                 Book_Author_Name = "Dr Swammy",
-                ISBN_Num = "12345",
+                ISBN_Num = "1234567890123",
                 Book_Publication_Date = DateTime.Parse("01/02/2020")
             };
             // Act
@@ -78,10 +78,10 @@ namespace Book_Details_MicroService_Testing
         }
 
         [Fact]
-        public void GetById_Passed_ReturnsNotFoundResult()
+        public void GetByIsbn_Passed_ReturnsNotFoundResult()
         {
             // Act
-            int id = 0;
+            string id = "0";
             var notFoundResult = _controller.Get(id);
             // Assert
             Assert.IsType<OkObjectResult>(notFoundResult);
@@ -89,10 +89,10 @@ namespace Book_Details_MicroService_Testing
         }
 
         [Fact]
-        public void GetById_ExistingIdPassed_ReturnsOkResult()
+        public void GetByIsbn_ExistingIsbnPassed_ReturnsOkResult()
         {
             // Arrange
-            int id = 1;
+            string id = "0";
             // Act
             var okResult = _controller.Get(id);
             // Assert
@@ -100,14 +100,14 @@ namespace Book_Details_MicroService_Testing
         }
 
         [Fact]
-        public void GetById_ExistingIdPassed_ReturnsRightItem()
+        public void GetByIsbn_ExistingIsbnPassed_ReturnsRightItem()
         {
             // Arrange
-            int id = 1;
+            string id = "1234567890123";
             // Act
-            var okResult = _controller.Get(id) as OkObjectResult;
+            var okResult = _controller.Get(id);
             // Assert
-            Assert.IsType<BookMaster>(okResult.Value);
+            Assert.IsType<OkObjectResult>(okResult);
 
         }
 
