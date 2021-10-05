@@ -1,0 +1,96 @@
+﻿html, body {
+    font-family: Arial,Verdana,sans-serif;
+    font-size: 15px;
+    line-height: 1.5
+}
+
+html {
+    overflow-x: hidden
+}
+
+h1 {
+    font-size: 36px
+}
+
+h2 {
+    font-size: 30px
+}
+
+h3 {
+    font-size: 24px
+}
+
+h4 {
+    font-size: 20px
+}
+
+h5 {
+    font-size: 18px
+}
+
+h6 {
+    font-size: 16px
+}
+
+.w3-serif {
+    font-family: serif
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial,"Segoe UI",Arial,sans-serif;
+    font-weight: 400;
+    margin: 10px 0
+}
+
+.w3-wide {
+    letter-spacing: 4px
+}
+
+/*/.swagger-ui .swagger-container .topbar .wrapper .topbar-wrapper;*/
+
+.swagger-ui {
+    background-color: aquamarine !important;
+}
+
+.swagger-ui .swagger-container {
+    background-color: gold !important;
+}
+
+
+    .swagger-ui .swagger-container .topbar .wrapper .topbar-wrapper {
+        background-color: red !important;
+    }
+
+    .swagger-ui .topbar {
+        background-color: indigo;
+        border-bottom: 3px solid #547f00;
+    }
+
+
+#header {
+    background: #222 !important;
+}
+
+#select_document {
+    background: #666 !important;
+}
+
+input[name=baseUrl] {
+    display: none !important;
+}
+
+.logo__title {
+    display: none !important;
+}
+
+#api_info a {
+    color: #007bff !important;
+    text-decoration: none !important;
+}
+
+    #api_info a:hover,
+    #api_info a:focus,
+    #api_info a:active {
+        color: #0056b3 !important;
+        text-decoration: underline !important;
+    }
