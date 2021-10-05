@@ -12,6 +12,8 @@ namespace BookDetails_MicroService.Repository
 
         BookMaster GetBook_byCode(int id);
 
+        IEnumerable<BookMaster> GetBook_byISBN(string isbn);
+
         void InsertBook(BookMaster loc);
 
         void UpdateBook(BookMaster loc);

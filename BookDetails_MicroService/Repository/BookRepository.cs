@@ -4,6 +4,8 @@ using BookDetails_MicroService.DBContexts;
 using BookDetails_MicroService.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Components.Web;
+using System.Linq;
 
 namespace BookDetails_MicroService.Repository
 {
@@ -33,6 +35,12 @@ namespace BookDetails_MicroService.Repository
         public BookMaster GetBook_byCode(int id)
         {
             return context.BookMasters.Find(id);
+        }
+
+        public IEnumerable<BookMaster> GetBook_byISBN(string ISBN)
+        {
+            var abc = context.BookMasters.Where(s => s.ISBN_Num.ToString().Contains(ISBN.ToString()));
+            return abc;
         }
 
         public void InsertBook(BookMaster loc)
