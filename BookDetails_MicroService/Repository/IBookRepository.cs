@@ -10,12 +10,12 @@ namespace BookDetails_MicroService.Repository
     {
         IEnumerable<BookMaster> GetBookMaster();
 
-        BookMaster GetBook_byCode(Decimal Code);
+        BookMaster GetBook_byCode(int id);
 
         void InsertBook(BookMaster loc);
 
         void UpdateBook(BookMaster loc);
 
-        void DeleteBook(Decimal ID);
+        void DeleteBook(int id);
     }
 }

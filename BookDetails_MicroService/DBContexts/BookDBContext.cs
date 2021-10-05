@@ -8,5 +8,10 @@ namespace BookDetails_MicroService.DBContexts
     {
         public BookDBContext(DbContextOptions<BookDBContext> dbContext) : base(dbContext) { }
         public DbSet<BookMaster> BookMasters { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<BookMaster>().Property(b => b.Id).ValueGeneratedOnAdd();
+        }
     }
 }

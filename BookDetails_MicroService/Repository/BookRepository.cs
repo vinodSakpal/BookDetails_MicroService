@@ -18,10 +18,9 @@ namespace BookDetails_MicroService.Repository
             context = _Contexts;
         }
 
-        
-        public void DeleteBook(Decimal ID)
+        public void DeleteBook(int id)
         {
-            var book = context.BookMasters.Find(ID);
+            var book = context.BookMasters.Find(id);
             context.BookMasters.Remove(book);
             context.SaveChanges();
         }
@@ -31,14 +30,14 @@ namespace BookDetails_MicroService.Repository
             return context.BookMasters;
         }
 
-        public BookMaster GetBook_byCode(Decimal Code)
+        public BookMaster GetBook_byCode(int id)
         {
-            return context.BookMasters.Find(Code);
+            return context.BookMasters.Find(id);
         }
 
         public void InsertBook(BookMaster loc)
         {
-            context.Add(loc);
+            context.BookMasters.Add(loc);
             context.SaveChanges();
         }
 

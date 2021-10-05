@@ -15,12 +15,11 @@ namespace Book_Details_MicroService_Testing
     {
         BookDetailsController _controller;
         IBookRepository _service;
-        BookDBContext Contexts;
         private ILogger<BookDetailsController> logger;
 
         public BookDetailsControllerTests()
         {
-            _service = new BookRepositoryTests(Contexts);
+            _service = new InMemoryBookRepository();
             _controller = new BookDetailsController(_service,logger);
         }
 
@@ -37,7 +36,7 @@ namespace Book_Details_MicroService_Testing
             // Act
             var badResponse = _controller.Post(nameMissingItem);
             // Assert
-            
+            Assert.IsType<CreatedAtActionResult>(badResponse);
         }
 
         [Fact]
@@ -82,19 +81,20 @@ namespace Book_Details_MicroService_Testing
         public void GetById_Passed_ReturnsNotFoundResult()
         {
             // Act
-            Decimal Id = 0;
-            var notFoundResult = _controller.Get(Id);
+            int id = 0;
+            var notFoundResult = _controller.Get(id);
             // Assert
-           
+            Assert.IsType<OkObjectResult>(notFoundResult);
+
         }
 
         [Fact]
         public void GetById_ExistingIdPassed_ReturnsOkResult()
         {
             // Arrange
-            Decimal Id = 1;
+            int id = 1;
             // Act
-            var okResult = _controller.Get(Id);
+            var okResult = _controller.Get(id);
             // Assert
             Assert.IsType<OkObjectResult>(okResult);
         }
@@ -103,34 +103,34 @@ namespace Book_Details_MicroService_Testing
         public void GetById_ExistingIdPassed_ReturnsRightItem()
         {
             // Arrange
-            Decimal Id = 1;
+            int id = 1;
             // Act
-            var okResult = _controller.Get(Id) as OkObjectResult;
+            var okResult = _controller.Get(id) as OkObjectResult;
             // Assert
             Assert.IsType<BookMaster>(okResult.Value);
 
         }
 
         [Fact]
-        public void Delete_NotExistingIddPassed_ReturnsNotFoundResponse()
+        public void Delete_NotExistingIdPassed_ReturnsNotFoundResponse()
         {
             // Arrange
-            Decimal Id = 0;
+            int id = 0;
             // Act
-            var badResponse = _controller.Delete(Id);
+            var badResponse = _controller.Delete(id);
             // Assert
-            
+            Assert.IsType<OkResult>(badResponse);
         }
 
         [Fact]
         public void Delete_ExistingIdPassed_ReturnsOkResult()
         {
             // Arrange
-            Decimal Id = 1;
+            int id = 1;
             // Act
-            var okResponse = _controller.Delete(Id);
+            var okResponse = _controller.Delete(id);
             // Assert
-            
+            Assert.IsType<OkResult>(okResponse);
         }
 
     }

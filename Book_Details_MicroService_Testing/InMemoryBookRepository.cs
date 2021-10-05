@@ -7,12 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Book_Details_MicroService_Testing
 {
-    public class BookRepositoryTests : IBookRepository
+    public class InMemoryBookRepository : IBookRepository
     {
-        private readonly List<BookMaster> _bookCart;
-        BookDBContext context;
+        private List<BookMaster> _bookCart;
 
-        public BookRepositoryTests(BookDBContext _Contexts)
+        public InMemoryBookRepository()
         {
             _bookCart = new List<BookMaster>()
             {
@@ -23,25 +22,26 @@ namespace Book_Details_MicroService_Testing
                 new BookMaster() { Id = 1,
                     Book_Name = "Dot Net2", Book_Author_Name="XYZ", ISBN_Num = "123452",Book_Publication_Date=DateTime.Parse("10/10/2020") }
             };
-            context = _Contexts;
-            
         }
 
         public IEnumerable<BookMaster> GetBookMaster()
         {
             return _bookCart;
         }
+
         public void InsertBook(BookMaster newItem)
         {
             newItem.Id = 0;
             _bookCart.Add(newItem);
-            //return newItem;
+
         }
-        public BookMaster GetBook_byCode(decimal id)
+
+        public BookMaster GetBook_byCode(int id)
         {
             return _bookCart.Find(a => a.Id == id);
-                      }
-        public void DeleteBook(decimal id)
+        }
+
+        public void DeleteBook(int id)
         {
             var existing = _bookCart.Find(a => a.Id == id);
             _bookCart.Remove(existing);
@@ -49,11 +49,7 @@ namespace Book_Details_MicroService_Testing
 
         public void UpdateBook(BookMaster newItem)
         {
-            context.Entry(newItem).State = EntityState.Modified;
-            context.SaveChanges();
         }
-
-
 
     }
 }

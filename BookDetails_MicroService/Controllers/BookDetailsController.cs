@@ -30,7 +30,7 @@ namespace BookDetails_MicroService.Controllers
 
         [Produces("application/json")]
         [HttpGet("(id)", Name = "Get")]
-        public IActionResult Get(Decimal id)
+        public IActionResult Get(int id)
         {
             var book = repository.GetBook_byCode(id);
             return new OkObjectResult(book);
@@ -67,7 +67,7 @@ namespace BookDetails_MicroService.Controllers
 
         [Produces("application/json")]
         [HttpDelete("(id)")]
-        public IActionResult Delete(Decimal id)
+        public IActionResult Delete(int id)
         {
             repository.DeleteBook(id);
             return new OkResult();
