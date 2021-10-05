@@ -18,6 +18,8 @@ namespace BookDetails_MicroService.Model
         public string Book_Author_Name { get; set; }
 
         [Required]
+        [Range(1000000000000, 9999999999999, ErrorMessage = "ISBN should be of 13 digit")]
+        [StringLength(13, MinimumLength = 13, ErrorMessage = "ISBN_Num must have Length of 13")]
         public string ISBN_Num { get; set; }
 
         [Required]
