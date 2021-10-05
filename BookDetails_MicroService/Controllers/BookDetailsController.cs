@@ -29,10 +29,10 @@ namespace BookDetails_MicroService.Controllers
         }
 
         [Produces("application/json")]
-        [HttpGet("(id)", Name = "Get")]
-        public IActionResult Get(int id)
+        [HttpGet("(ISBN)", Name = "Get")]
+        public IActionResult Get(string isbn)
         {
-            var book = repository.GetBook_byCode(id);
+            var book = repository.GetBook_byISBN(isbn);
             return new OkObjectResult(book);
 
         }
@@ -50,7 +50,7 @@ namespace BookDetails_MicroService.Controllers
         }
 
         [Produces("application/json")]
-        [HttpPut("{id}")]
+        [HttpPut("{ID}")]
         public IActionResult Put([FromBody] BookMaster book)
         {
             if (book != null)
@@ -66,7 +66,7 @@ namespace BookDetails_MicroService.Controllers
         }
 
         [Produces("application/json")]
-        [HttpDelete("(id)")]
+        [HttpDelete("(ID)")]
         public IActionResult Delete(int id)
         {
             repository.DeleteBook(id);
