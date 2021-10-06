@@ -39,7 +39,7 @@ namespace BookDetails_MicroService.Repository
 
         public IEnumerable<BookMaster> GetBook_byISBN(string ISBN)
         {
-            var abc = context.BookMasters.Where(s => s.ISBN_Num.ToString().Contains(ISBN.ToString()));
+            var abc = context.BookMasters.Where(s => s.ISBN_Num.Contains(ISBN));
             return abc;
         }
 
