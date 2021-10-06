@@ -42,11 +42,6 @@ namespace Book_Details_MicroService_Testing
             return _bookCart.Find(a => a.Id == id);
         }
 
-        //public BookMaster GetBook_byISBN(string isbn)
-        //{
-        //    return _bookCart.Find(s => s.ISBN_Num.ToString().Contains(isbn.ToString()));
-            
-        //}
 
         public void DeleteBook(int id)
         {
@@ -60,7 +55,7 @@ namespace Book_Details_MicroService_Testing
 
         public IEnumerable<BookMaster>GetBook_byISBN(string isbn)
         {
-            return _bookCart.Where(s => s.ISBN_Num.ToString().Contains(isbn.ToString()));
+            return _bookCart.Where(s => s.ISBN_Num.Contains(isbn));
         } 
 
     }
