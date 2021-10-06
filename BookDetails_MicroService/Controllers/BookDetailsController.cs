@@ -50,7 +50,7 @@ namespace BookDetails_MicroService.Controllers
         }
 
         [Produces("application/json")]
-        [HttpPut("{ID}")]
+        [HttpPut()]
         public IActionResult Put([FromBody] BookMaster book)
         {
             if (book != null)
